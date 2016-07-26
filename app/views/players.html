@@ -1,0 +1,17 @@
+<h3>{{selectedTeam}}</h3>
+<table class="highlight">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Project</th>
+      <th>Hobby</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="player in teamPlayers">
+      <td>{{player.name}}</td>
+      <td>{{player.project}}</td>
+      <td>{{player.hobby}}</td>
+    </tr>
+  </tbody>
+</table>

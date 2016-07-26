@@ -1,0 +1,22 @@
+<h3>Fixtures</h3>
+
+<table class="highlight">
+  <thead>
+    <tr>
+      <th>Opponents</th>
+      <th>Match Time</th>
+      <th>Ground No</th>
+      <th>Match Status</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="fixture in fixtures">
+      <td><a href="#/teams/{{fixture.team1}}/players">{{fixture.team1}}</a> vs <a href="#/teams/{{fixture.team2}}/players">{{fixture.team2}}</a></td>
+      <td>{{fixture.time}}</td>
+      <td>{{fixture.groundNo}}</td>
+      <td><span class="notif {{fixture.statusColor}}" data-badge-caption="custom caption">{{fixture.status}}</span></td>
+      <td>{{fixture.result}}</td>
+    </tr>
+  </tbody>
+</table>

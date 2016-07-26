@@ -1,0 +1,12 @@
+
+<div class="col s6 m4 l3" ng-repeat="team in teamDetails">
+  <div class="card-panel hoverable #fafafa grey lighten-5 z-depth-1 teamCard">
+    <a href="#/teams/{{team.name}}/players">
+      <img ng-src="{{team.logo}}"/>
+    </a>
+    <div class="">
+      <p ng-model="teamName" class="center-align"><span>Team Name:</span> <a href="#/teams/{{team.name}}/players">{{team.name}}</a></p>
+      <p class="center-align teamLastInfo"><span>Team Captain:</span> {{team.captain}}</p>
+    </div>
+  </div>
+</div>

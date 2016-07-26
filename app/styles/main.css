@@ -1,0 +1,67 @@
+body, p, h1, h2, h3, h4, h5, h6{
+  font-family: 'Raleway';
+}
+.viewContainer{
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}
+.card-panel{
+  margin-top: 30px;
+}
+nav{
+  height: 50px;
+}
+.brand-log0{
+  color: rgba(255, 255, 255, 0.85);
+}
+.nav-wrapper a{
+    line-height: 50px;
+}
+.card-panel i{
+  position: relative;
+  margin-left: 50%;
+  left: -45px;
+}
+.card-panel h5{
+  position: relative;
+}
+#teamTable{
+  margin-top: 50px;
+}
+img{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+span.badge.new{
+  right: initial;
+}
+.notif{
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+.notif.blue, .notif.red{
+  color: white;
+}
+.notif.yellow{
+  color: black;
+}
+.preloader-wrapper{
+  position: absolute;
+  margin-left: 50%;
+  left: -24px;
+}
+a i, a h6, a h5, a h4, a h3{
+  color: rgba(0, 0, 0, 0.6);
+}
+div.card-panel.teamCard {
+  padding: 0px;
+  min-height: 380px;
+}
+div.card-panel.teamCard p.teamLastInfo {
+    padding-bottom: 15px;
+}
+div.card-panel.teamCard img{
+  min-height: 285px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+}
