@@ -31,7 +31,7 @@ angular.module('bclLiveApp')
       });
     }
   })
-  .controller('playerCtrl', function($scope, $routeParams, $firebaseObject, $firebaseArray){
+  .controller('playerCtrl', function($scope, $routeParams, $firebaseObject, $firebaseArray, fbServ){
     $scope.teamId = $routeParams.id;
     $scope.teamName = $routeParams.name;
     $scope.refTeam = new Firebase(atob(fbServ.fbob)+"/teams/"+ $scope.teamId +"/players");
