@@ -1,0 +1,99 @@
+<div class="row">
+
+  <div class="col s12 m12 l4 offset-l2">
+    <div class="card-panel tour-best-card z-depth-1">
+      <h4 class="center-align">
+        {{dashboard.winners == '' || dashboard.winners == 'null' ? 'Not yet announced' : dashboard.winners}}
+      </h4>
+      <h6 class="center-align">Winners</h6>
+    </div>
+  </div>
+
+  <div class="col s12 m12 l4">
+    <div class="card-panel tour-best-card z-depth-1">
+      <h4 class="center-align">
+        {{dashboard.runners == '' || dashboard.runners == 'null' ? 'Not yet announced' : dashboard.runners}}
+      </h4>
+      <h6 class="center-align">Runners</h6>
+    </div>
+  </div>
+
+</div>
+<div class="row">
+
+  <div class="col s12 m12 l4">
+    <div class="card-panel tour-best-card z-depth-1">
+      <h4 class="center-align">
+        {{dashboard.bestBatsman == '' || dashboard.bestBatsman == 'null' ? 'Not yet announced' : dashboard.bestBatsman}}
+      </h4>
+      <h6 class="center-align">Best Batsman</h6>
+    </div>
+  </div>
+
+  <div class="col s12 m12 l4">
+    <div class="card-panel tour-best-card z-depth-1">
+      <h4 class="center-align">
+        {{dashboard.manOfTheSeries == '' || dashboard.manOfTheSeries == 'null' ? 'Not yet announced' : dashboard.manOfTheSeries}}
+      </h4>
+      <h6 class="center-align">Man of the Series</h6>
+    </div>
+  </div>
+
+  <div class="col s12 m12 l4">
+    <div class="card-panel tour-best-card z-depth-1">
+      <h4 class="center-align">
+        {{dashboard.bestBowler == '' || dashboard.bestBowler == 'null' ? 'Not yet announced' : dashboard.bestBowler}}
+      </h4>
+      <h6 class="center-align">Best Bowler</h6>
+    </div>
+  </div>
+
+</div>
+<div class="row">
+
+  <div class="col s12 m6 l3">
+    <div class="card-panel tour-card z-depth-1">
+      <h2 class="center-align top-5">{{getTotalRuns()}}</h2>
+      <h5 class="center-align">Tournament Runs</h5>
+    </div>
+  </div>
+
+  <div class="col s12 m6 l3">
+    <div class="card-panel tour-card z-depth-1">
+      <h2 class="center-align top-5">{{getTotalWickets()}}</h2>
+      <h5 class="center-align">Tournament Wickets</h5>
+    </div>
+  </div>
+
+  <div class="col s12 m6 l3">
+    <div class="card-panel tour-card z-depth-1">
+      <h2 class="center-align top-5">{{getTotalSixes()}}</h2>
+      <h5 class="center-align">Tournament Sixes</h5>
+    </div>
+  </div>
+
+  <div class="col s12 m6 l3">
+    <div class="card-panel tour-card z-depth-1">
+      <h2 class="center-align top-5">{{getTotalFours()}}</h2>
+      <h5 class="center-align">Tournament Fours</h5>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .top-5{
+    margin-top: 5px;
+  }
+  .tour-card{
+    background: #1D976C; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #1D976C , #93F9B9); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, rgba(29, 151, 108, 0.65) , #93F9B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  .tour-best-card{
+    color: white;
+    background: #4b6cb7; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #4b6cb7 , #182848); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #4b6cb7 , #182848); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+</style>

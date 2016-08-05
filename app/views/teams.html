@@ -1,12 +1,36 @@
 
-<div class="col s6 m4 l3" ng-repeat="team in teamDetails">
+<div class="col s12 m4 l4" ng-repeat="team in teamDetails">
   <div class="card-panel hoverable #fafafa grey lighten-5 z-depth-1 teamCard">
-    <a href="#/teams/{{team.name}}/players">
+    <a href="#/teams/{{team.$id}}/{{team.name}}/players">
       <img ng-src="{{team.logo}}"/>
     </a>
     <div class="">
-      <p ng-model="teamName" class="center-align"><span>Team Name:</span> <a href="#/teams/{{team.name}}/players">{{team.name}}</a></p>
+      <p ng-model="teamName" class="center-align"><span>Team Name:</span> {{team.name}}</p>
       <p class="center-align teamLastInfo"><span>Team Captain:</span> {{team.captain}}</p>
     </div>
   </div>
 </div>
+
+<div class="preloader-wrapper active" ng-hide="dataLoaded">
+  <div class="spinner-layer spinner-red-only">
+    <div class="circle-clipper left">
+      <div class="circle"></div>
+    </div><div class="gap-patch">
+      <div class="circle"></div>
+    </div><div class="circle-clipper right">
+      <div class="circle"></div>
+    </div>
+  </div>
+</div>
+
+<style media="screen">
+  a.btn-floating{
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    z-index: 9999;
+  }
+  .preloader-wrapper{
+    margin-top: 15px;
+  }
+</style>

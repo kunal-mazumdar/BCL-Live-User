@@ -14,6 +14,10 @@ nav{
 .brand-log0{
   color: rgba(255, 255, 255, 0.85);
 }
+.nav-wrapper{
+  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%) !important;
+  opacity: 0.95;
+}
 .nav-wrapper a{
     line-height: 50px;
 }
@@ -37,14 +41,20 @@ span.badge.new{
   right: initial;
 }
 .notif{
-  padding: 2px 5px;
+  padding: 5px 5px;
   border-radius: 3px;
 }
-.notif.blue, .notif.red{
+.notif.blue{
   color: white;
 }
-.notif.yellow{
+.notif.red{
+  color: white;
+}
+.yellow{
   color: black;
+  background: #70e1f5; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #70e1f5 , #ffd194); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #70e1f5 , #ffd194); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .preloader-wrapper{
   position: absolute;
@@ -57,11 +67,45 @@ a i, a h6, a h5, a h4, a h3{
 div.card-panel.teamCard {
   padding: 0px;
   min-height: 380px;
+  max-height: 380px;
 }
 div.card-panel.teamCard p.teamLastInfo {
     padding-bottom: 15px;
 }
 div.card-panel.teamCard img{
   min-height: 285px;
+  max-height: 285px;
   border-bottom: 1px solid rgba(128, 128, 128, 0.3);
 }
+.scoreCard-gradient{
+  background: #3a7bd5; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #3a7bd5 , #3a6073); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #3a7bd5 , #3a6073); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+}
+.dashboard-grad{
+  color: white;
+  background: #348F50; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #348F50 , #56B4D3); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #348F50 , #56B4D3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.teams-grad{
+  background: #FF5F6D; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #FF5F6D , #FFC371); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #FF5F6D , #FFC371); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.credits-grad{
+
+
+background: #2980b9; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #2980b9 , #2c3e50); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #2980b9 , #2c3e50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.fixtures-grad{
+
+
+background: #136a8a; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #136a8a , #267871); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #136a8a , #267871); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }

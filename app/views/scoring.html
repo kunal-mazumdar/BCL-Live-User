@@ -1,0 +1,318 @@
+<div class="row">
+  <div class="input-field col m12 s12">
+    <h5 class="center-align notif yellow">{{team1Name}} vs {{team2Name}}</h5>
+  </div>
+
+  <!-- Preloader -->
+  <div class="preloader-wrapper active" ng-hide="scoreLoaded" style="margin-top: 100px;">
+    <div class="spinner-layer spinner-red-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col m12 s12" ng-hide="!scoreLoaded">
+    <!-- Match Status -->
+    <div class="col m4 s12">
+      <div class="input-field col m6 s6">
+        <p class="center-align">Status : </p>
+      </div>
+      <div class="input-field col m6 s6">
+        <p class="center-align">{{data.status}}</p>
+      </div>
+    </div>
+
+    <!-- TOSS Winner -->
+    <div class="col m4 s12">
+      <div class="input-field col m6 s6">
+        <p class="center-align">Toss Winner : </p>
+      </div>
+      <div class="input-field col m6 s6">
+        <p class="center-align">{{data[firstBattingTeamNo].tossWinner == 'yes' ? data[firstBattingTeamNo].name : data[secondBattingTeamNo].name}}</p>
+      </div>
+    </div>
+
+    <!-- TOSS Decision -->
+    <div class="col m4 s12">
+      <div class="input-field col m6 s6">
+        <p class="center-align">Toss Decision : </p>
+      </div>
+      <div class="input-field col m6 s6">
+        <p class="center-align">{{data[firstBattingTeamNo].tossWinner == 'yes' ? data[firstBattingTeamNo].tossDecision : data[secondBattingTeamNo].tossDecision}}</p>
+      </div>
+    </div>
+
+  </div>
+  <hr/>
+  <div class="row" ng-hide="!scoreLoaded">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active" href="#inning1">First Inning</a></li>
+        <li class="tab col s3"><a href="#inning2">Second Inning</a></li>
+      </ul>
+    </div>
+    <!-- First Inning body | Start -->
+    <div id="inning1" class="col s12">
+
+      <!-- Team1 Card -->
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header scoreCard-gradient row" style="min-height: 1rem; line-height: 1rem;">
+            <div class="col m8 s6">
+              <p>{{data[firstBattingTeamNo].name}} Batting</p>
+            </div>
+            <div class="col m4 s6">
+              <div class="col s3">
+                <p>Runs</p>
+                <p>{{data[firstBattingTeamNo].totalRunsScored}}</p>
+              </div>
+              <div class="col s3">
+                <p>Wickets</p>
+                <p>{{data[firstBattingTeamNo].totalWicketsLost}}</p>
+              </div>
+              <div class="col s3">
+                <p>Fours</p>
+                <p>{{data[firstBattingTeamNo].totalFours}}</p>
+              </div>
+              <div class="col s3">
+                <p>Sixes</p>
+                <p>{{data[firstBattingTeamNo].totalSixes}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="collapsible-body">
+            <table class="highlight">
+              <thead>
+                <tr>
+                  <th>Batsman</th>
+                  <th>Runs</th>
+                  <th>Bowls Faced</th>
+                  <th>Fours</th>
+                  <th>Sixes</th>
+                  <th>Strike Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="player in data[firstBattingTeamNo].players | filter:{name: '!undefined'}">
+                  <td>{{player.name}}</td>
+                  <td>{{player.runsScored}}</td>
+                  <td>{{player.ballsFaced}}</td>
+                  <td>{{player.fours}}</td>
+                  <td>{{player.sixes}}</td>
+                  <td>{{player.runsScored / player.ballsFaced == NaN ? '' : player.runsScored / player.ballsFaced * 100 | number:2}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header scoreCard-gradient row" style="min-height: 1rem; line-height: 1rem;">
+            <div class="col m8 s6">
+              <p>{{data[firstFieldingTeamNo].name}} Bowling</p>
+            </div>
+            <div class="col m4 s6">
+              <div class="col s3">
+                <p>Overs</p>
+                <p>{{data[firstFieldingTeamNo].totalBallsDelivered}}</p>
+              </div>
+              <div class="col s3">
+                <p>Wides</p>
+                <p>{{data[firstFieldingTeamNo].totalWides}}</p>
+              </div>
+              <div class="col s3">
+                <p>No Balls</p>
+                <p>{{data[firstFieldingTeamNo].totalNoBalls}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="collapsible-body">
+            <table class="highlight">
+              <thead>
+                <tr>
+                  <th>Bowler</th>
+                  <th>Overs</th>
+                  <th>Runs Given</th>
+                  <th>Wickets</th>
+                  <th>NB</th>
+                  <th>WD</th>
+                  <th>Economy</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="player in data[firstFieldingTeamNo].players | filter:{name: '!undefined'}">
+                  <td>{{player.name}}</td>
+                  <td>{{player.ballsDelivered}}</td>
+                  <td>{{player.runsGiven}}</td>
+                  <td>{{player.wicketsTaken}}</td>
+                  <td>{{player.noBallsGiven}}</td>
+                  <td>{{player.widesGiven}}</td>
+                  <td>{{player.runsGiven / ((player.ballsDelivered/6 | parse)  + ((player.ballsDelivered%6)/10) == 0 ? 1 : (player.ballsDelivered/6 | parse)  + ((player.ballsDelivered%6)/10)) | number:2}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- First Inning body | End -->
+    <!-- Second Inning body | Start -->
+    <div id="inning2" class="col s12">
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header scoreCard-gradient row" style="min-height: 1rem; line-height: 1rem;">
+            <div class="col m8 s6">
+              <p>{{data[secondBattingTeamNo].name}} Batting</p>
+            </div>
+            <div class="col m4 s6">
+              <div class="col s3">
+                <p>Runs</p>
+                <p>{{data[secondBattingTeamNo].totalRunsScored}}</p>
+              </div>
+              <div class="col s3">
+                <h6>Wickets</p>
+                <p>{{data[secondBattingTeamNo].totalWicketsLost}}</p>
+              </div>
+              <div class="col s3">
+                <h6>Fours</p>
+                <p>{{data[secondBattingTeamNo].totalFours}}</p>
+              </div>
+              <div class="col s3">
+                <h6>Sixes</p>
+                <p>{{data[secondBattingTeamNo].totalSixes}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="collapsible-body">
+            <table class="highlight">
+              <thead>
+                <tr>
+                  <th>Batsman</th>
+                  <th>Runs</th>
+                  <th>Bowls Faced</th>
+                  <th>Fours</th>
+                  <th>Sixes</th>
+                  <th>Strike Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="player in data[secondBattingTeamNo].players | filter:{name: '!undefined'}">
+                  <td>{{player.name}}</td>
+                  <td>{{player.runsScored}}</td>
+                  <td>{{player.ballsFaced}}</td>
+                  <td>{{player.fours}}</td>
+                  <td>{{player.sixes}}</td>
+                  <td>{{player.runsScored / player.ballsFaced == NaN ? '' : player.runsScored / player.ballsFaced * 100 | number:2}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header scoreCard-gradient row" style="min-height: 1rem; line-height: 1rem;">
+            <div class="col m8 s6">
+              <p>{{data[secondFieldingTeamNo].name}} Bowling</p>
+            </div>
+            <div class="col m4 s6">
+              <div class="col s3">
+                <p>Overs</p>
+                <p>{{data[secondFieldingTeamNo].totalBallsDelivered}}</p>
+              </div>
+              <div class="col s3">
+                <p>Wides</p>
+                <p>{{data[secondFieldingTeamNo].totalWides}}</p>
+              </div>
+              <div class="col s3">
+                <p>No Balls</p>
+                <p>{{data[secondFieldingTeamNo].totalNoBalls}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="collapsible-body">
+            <table class="highlight">
+              <thead>
+                <tr>
+                  <th>Bowler</th>
+                  <th>Overs</th>
+                  <th>Runs Given</th>
+                  <th>Wickets</th>
+                  <th>NB</th>
+                  <th>WD</th>
+                  <th>Economy</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="player in data[secondFieldingTeamNo].players | filter:{name: '!undefined'}">
+                  <td>{{player.name}}</td>
+                  <td>{{player.ballsDelivered}}</td>
+                  <td>{{player.runsGiven}}</td>
+                  <td>{{player.wicketsTaken}}</td>
+                  <td>{{player.noBallsGiven}}</td>
+                  <td>{{player.widesGiven}}</td>
+                  <td>{{player.runsGiven / ((player.ballsDelivered/6 | parse)  + ((player.ballsDelivered%6)/10) == 0 ? 1 : (player.ballsDelivered/6 | parse)  + ((player.ballsDelivered%6)/10)) | number:2}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </li>
+      </ul>
+    </div>
+    </div>
+    <!-- Second Inning body | End -->
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('ul.tabs').tabs();
+    $('.collapsible').collapsible();
+  });
+</script>
+
+<style>
+  .isNotScoring{
+    color: rgba(0, 0, 0, 0.14) !important;
+    background-color: rgba(128, 128, 128, 0.28) !important;
+  }
+  .x-large{
+    font-size: xx-large;
+  }
+  .score-btn{
+    margin-left: 1px;
+    padding: 5px 10px;
+    border-radius: 2px;
+    color: rgba(0, 0, 0, 0.63);
+  }
+  .score-btn:hover{
+    color: white;
+    cursor: pointer;
+  }
+  .btn-success{
+    border: 1px solid #A5D6A7 !important;
+    background-color: #A5D6A7 !important;
+  }
+  .btn-success:hover{
+    border: 1px solid rgba(76, 175, 80, 0.7) !important;
+    background-color: rgba(76, 175, 80, 0.7) !important;
+  }
+  .btn-danger{
+    border: 1px solid #EF9A9A !important;
+    background-color: #EF9A9A !important;
+  }
+  .btn-danger:hover{
+    border: 1px solid rgba(244, 67, 54, 0.7) !important;
+    background-color: rgba(244, 67, 54, 0.7) !important;
+  }
+  .unselectable{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+</style>

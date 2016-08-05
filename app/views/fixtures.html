@@ -1,22 +1,69 @@
-<h3>Fixtures</h3>
-
+<h5 class="center-align notif yellow">Fixtures</h5>
 <table class="highlight">
   <thead>
     <tr>
+      <th class="hide-on-small-only">Match No</th>
+      <th class="hide-on-small-only">Match Time</th>
       <th>Opponents</th>
-      <th>Match Time</th>
-      <th>Ground No</th>
+      <th class="hide-on-small-only">Ground No</th>
       <th>Match Status</th>
       <th>Result</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="fixture in fixtures">
-      <td><a href="#/teams/{{fixture.team1}}/players">{{fixture.team1}}</a> vs <a href="#/teams/{{fixture.team2}}/players">{{fixture.team2}}</a></td>
-      <td>{{fixture.time}}</td>
-      <td>{{fixture.groundNo}}</td>
-      <td><span class="notif {{fixture.statusColor}}" data-badge-caption="custom caption">{{fixture.status}}</span></td>
+      <td class="hide-on-small-only">{{fixture.matchNo}}</td>
+      <td class="hide-on-small-only">{{fixture.matchTime}}</td>
+      <td><a href="#/scoring/fixture/{{fixture.$id}}/team1/{{fixture.team1.id}}/{{fixture.team1.name}}/team2/{{fixture.team2.id}}/{{fixture.team2.name}}">{{fixture.team1.name}} vs {{fixture.team2.name}}</a></td>
+      <td class="hide-on-small-only">{{fixture.groundNo}}</td>
+      <td><span class="notif {{fixture.status | spaceless | lowercase}}">{{fixture.status}}</span></td>
       <td>{{fixture.result}}</td>
     </tr>
   </tbody>
 </table>
+
+<!-- Preloader -->
+<div class="preloader-wrapper active" ng-hide="dataLoaded">
+  <div class="spinner-layer spinner-red-only">
+    <div class="circle-clipper left">
+      <div class="circle"></div>
+    </div><div class="gap-patch">
+      <div class="circle"></div>
+    </div><div class="circle-clipper right">
+      <div class="circle"></div>
+    </div>
+  </div>
+</div>
+
+
+<style media="screen">
+  a.btn-floating{
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    z-index: 9999;
+  }
+  .preloader-wrapper{
+    margin-top: 15px;
+  }
+  .yet-to-start{
+    color: white;
+    background-color: #2196F3 !important;
+  }
+  .cancelled-due-to-rain, .walk-over{
+    color: white;
+    background-color: #E53935 !important;
+  }
+  .live{
+    color: white;
+    background-color: #43A047 !important;
+  }
+  .yet.to.start{
+    color: white;
+    background-color: #039be5 !important;
+  }
+  .finished{
+    color: white;
+    background-color: #fb8c00 !important;
+  }
+</style>

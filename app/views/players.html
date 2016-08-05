@@ -1,17 +1,36 @@
-<h3>{{selectedTeam}}</h3>
-<table class="highlight">
+<h5 class="center-align notif yellow">{{teamName}} Squad</h5>
+<table class="highlight" ng-hide="!dataLoaded">
   <thead>
     <tr>
       <th>Name</th>
       <th>Project</th>
-      <th>Hobby</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="player in teamPlayers">
       <td>{{player.name}}</td>
       <td>{{player.project}}</td>
-      <td>{{player.hobby}}</td>
     </tr>
   </tbody>
 </table>
+
+<div class="preloader-wrapper active" ng-hide="dataLoaded">
+  <div class="spinner-layer spinner-red-only">
+    <div class="circle-clipper left">
+      <div class="circle"></div>
+    </div><div class="gap-patch">
+      <div class="circle"></div>
+    </div><div class="circle-clipper right">
+      <div class="circle"></div>
+    </div>
+  </div>
+</div>
+
+<style media="screen">
+  a.btn-floating{
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    z-index: 9999;
+  }
+</style>
