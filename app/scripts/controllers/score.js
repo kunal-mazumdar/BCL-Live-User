@@ -10,7 +10,7 @@ angular.module('bclLiveApp')
     bindTeamScore();
 
     $scope.onChange = function(){
-      if($scope.fixtureStatus == 'Live' && $scope.tossWinnerTeamUi && $scope.tossDecisionUi){
+      if($scope.tossWinnerTeamUi && $scope.tossDecisionUi){
         $scope.teams = ['team1', 'team2'];
         $scope.actName = [$scope.team1Name, $scope.team2Name];
 
@@ -55,7 +55,9 @@ angular.module('bclLiveApp')
     function bindTeamScore(firstBattingTeamNo, secondBattingTeamNo){
       var refTeam1 = new Firebase(atob(fbServ.fbob)+"/fixtures/"+$scope.fixtureId);
       var objT1 = $firebaseObject(refTeam1);
-      objT1.$bindTo($scope, 'data');
+      objT1.$bindTo($scope, 'data').then(function(){
+        console.log($scope.data);
+      });
     }
 
     function fixtureServices(serviceIdentifier, teamIdentifier, variable1, variable2){
